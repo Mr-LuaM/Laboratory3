@@ -39,7 +39,7 @@
                         </nav>
                     </div>
                 </div>
-                <div class="header-right1 d-flex align-items-center">
+                <div class="header-right1 d-flex align-items-center main-menu  d-none d-lg-block">
                     <div class="search">
                         <ul class="d-flex align-items-center">
                             <li>
@@ -52,8 +52,22 @@
                                 </form>
                             </li>
                             <li>
-                                <a href="login.html" class="account-btn" target="_blank">My Account</a>
+                                <?php if (session()->get('isLoggedIn')): ?>
+                                    <a href="profile" class="account-btn" target="_blank">
+                                        <?= esc(session()->get('username')) ?>
+                                    </a>
+                                    <ul class="submenu">
+                                        <li><a href="profile">Profile</a></li>
+                                        <li><a href="logout">Logout</a></li>
+                                    </ul>
+                                <?php else: ?>
+                                    <a href="login" class="account-btn" target="_blank">Login</a>
+                                <?php endif; ?>
                             </li>
+
+
+
+
                             <li>
                                 <div class="card-stor">
                                     <img src="<?= base_url() ?>assets/img/icon/card.svg" alt>
