@@ -1,10 +1,11 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
+<?= $this->include('User_page/includes/head') ?>
 
 <body>
-  <?php include 'includes/head.php';
-  include 'includes/preloader.php';
-  include 'includes/navbar.php'; ?>
+
+  <?= $this->include('User_page/includes/preloader'); ?>
+  <?= $this->include('User_page/includes/navbar'); ?>
 
   <main>
 
@@ -325,12 +326,9 @@
     </div>
 
   </main>
-  <?php include 'includes/foot.php';
-
-  include 'includes/back2top.php';
-
-
-  include 'includes/scripts.php'; ?>
+  <?= $this->include('User_page/includes/foot'); ?>
+  <?= $this->include('User_page/includes/back2top'); ?>
+  <?= $this->include('User_page/includes/scripts'); ?>
 </body>
 
 <!-- Mirrored from preview.colorlib.com/theme/furn/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Sep 2023 14:33:28 GMT -->
