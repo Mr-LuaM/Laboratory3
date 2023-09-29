@@ -16,22 +16,13 @@
                         <nav>
                             <ul id="navigation">
                                 <li><a class="active" href="/">Home</a></li>
-                                <li><a href="product.html">Product</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="#">Page</a>
+                                <li><a href="product">Product</a></li>
+                                <li><a href="about">About</a></li>
+                                <li><a href="categories">Shop</a>
                                     <ul class="submenu">
-                                        <li><a href="login.html">Login</a></li>
-                                        <li><a href="card.html">Card</a></li>
-                                        <li><a href="categories.html">Categories</a></li>
+                                        <li><a href=".html">Categories</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
                                         <li><a href="product_details.html">Product Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="blog.html">Blog</a>
-                                    <ul class="submenu">
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog_details.html">Blog Details</a></li>
-                                        <li><a href="elements.html">Elements</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="contact.html">Contact</a></li>
@@ -58,7 +49,7 @@
                                     </a>
                                     <ul class="submenu">
                                         <li><a href="profile">Profile</a></li>
-                                        <li><a href="logout">Logout</a></li>
+                                        <li><a href="<?= base_url() ?>logout">Logout</a></li>
                                     </ul>
                                 <?php else: ?>
                                     <a href="login" class="account-btn" target="_blank">Login</a>
@@ -70,7 +61,8 @@
 
                             <li>
                                 <div class="card-stor">
-                                    <img src="<?= base_url() ?>assets/img/icon/card.svg" alt>
+                                    <a href="card"> <img src="<?= base_url() ?>assets/img/icon/card.svg" alt></a>
+
                                     <span>0</span>
                                 </div>
                             </li>

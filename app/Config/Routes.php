@@ -12,4 +12,4 @@ $routes->get('login', 'MainController::login');
 $routes->post('loginAuth', 'MainController::loginAuth');
 $routes->get('logout', 'MainController::logout');
 $routes->get('viewProducts/(:any)', 'ProductsController::viewProducts/$1', ['filter' => 'authGuard']);
-$routes->get('product', 'ProductsController::products', ['filter' => 'authGuard']);
+$routes->get('product', 'ProductsController::product', ['filter' => 'authGuard']);

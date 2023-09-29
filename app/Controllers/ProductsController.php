@@ -22,17 +22,32 @@ class ProductsController extends BaseController
         ];
         return view('User_page/index', $data);
     }
-    public function products()
-    {
-        //
-    }
-    public function viewProducts($productId)
+    public function product()
     {
         $data = [
-            'productDetails' => $this->products
-                ->join('categories', 'products.CategoryID = categories.CategoryID')
-                ->where('ProductID', $productId)
-                ->first(),
+            'productsCategories' => $this->productsCategories->findAll(),
+            'products' => $this->products->findAll(),
+        ];
+        return view('User_page/product', $data);
+    }
+    protected function getProductDetailsById($productId)
+    {
+        return $this->products
+            ->join('categories', 'products.CategoryID = categories.CategoryID')
+            ->where('ProductID', $productId)
+            ->first();
+    }
+
+    public function viewProducts($productId)
+    {
+        $productDetails = $this->getProductDetailsById($productId);
+
+        if (!$productDetails) {
+            return redirect()->to('products');
+        }
+
+        $data = [
+            'productDetails' => $productDetails,
         ];
 
         return view('User_page/product_details', $data);
