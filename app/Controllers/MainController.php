@@ -64,19 +64,18 @@ class MainController extends BaseController
         // Start a new session
         $session = session();
 
-
-        // Get the username and password from the request
+        // Get the username or email and password from the request
         $usernameOrEmail = $this->request->getVar('usernameOrEmail');
         $password = $this->request->getVar('password');
 
-        // Attempt to retrieve a user record by username
+        // Attempt to retrieve a user record by username or email
         $data = $this->user
             ->where('Username', $usernameOrEmail) // Check if Username matches
             ->orWhere('Email', $usernameOrEmail) // OR check if Email matches
             ->first();
 
         if ($data) {
-            // If a user with the provided username exists
+            // If a user with the provided username or email exists
 
             $hashedPassword = $data['Password'];
 
@@ -96,18 +95,32 @@ class MainController extends BaseController
 
                 // Set session data
                 $session->set($ses_data);
-
-                // Redirect to the user's profile page
-                return redirect()->to("");
+                return redirect()->to(""); // Change the URL accordingly
             } else {
                 // If the password is incorrect, display an error message
                 $session->setFlashdata('msg', 'Email or Password is incorrect.');
                 return redirect()->to('login');
             }
         } else {
-            // If no user with the provided username exists, display an error message
+            // If no user with the provided username or email exists, display an error message
             $session->setFlashdata('msg', 'Email does not exist.');
             return redirect()->to('login');
         }
     }
+    protected function isLoggedIn()
+    {
+        // Check if the user is authenticated based on your authentication logic
+        // For example, you can check if a user session variable exists
+        return session()->has('UserID'); // Adjust this logic based on your implementation
+    }
+    public function logout()
+    {
+        // Destroy all session data
+        session()->destroy();
+
+        // Redirect the user to the desired page (e.g., the login page)
+        return redirect()->to('login'); // Adjust the URL as needed
+    }
+
+
 }
