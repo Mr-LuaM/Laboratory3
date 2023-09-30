@@ -3,7 +3,7 @@
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-                <img src="<?= base_url() ?>assets/img/logo/loder.png" alt>
+                <img src="<?= base_url() ?>Userpage/assets/img/logo/loder.png" alt>
             </div>
         </div>
     </div>

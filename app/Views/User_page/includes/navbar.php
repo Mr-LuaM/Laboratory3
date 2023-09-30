@@ -5,11 +5,11 @@
                 <div class="header-left d-flex align-items-center">
 
                     <div class="logo">
-                        <a href="index.html"><img src="<?= base_url() ?>assets/img/logo/logo.png" alt></a>
+                        <a href="index.html"><img src="<?= base_url() ?>Userpage/assets/img/logo/logo.png" alt></a>
                     </div>
 
                     <div class="logo2">
-                        <a href="index.html"><img src="<?= base_url() ?>assets/img/logo/logo2.png" alt></a>
+                        <a href="index.html"><img src="<?= base_url() ?>Userpage/assets/img/logo/logo2.png" alt></a>
                     </div>
 
                     <div class="main-menu  d-none d-lg-block">

@@ -44,8 +44,9 @@
             <div class="product_slider_img">
               <div id="vertical">
                 <!-- Display the single product image from the database -->
-                <div data-thumb="<?= base_url() ?>assets/img/gallery/<?= ($productDetails['ImageURL']) ?>">
-                  <img src="<?= base_url() ?>assets/img/gallery/<?= ($productDetails['ImageURL']) ?>" class="w-100">
+                <div data-thumb="<?= base_url() ?>Userpage/assets/img/gallery/<?= ($productDetails['ImageURL']) ?>">
+                  <img src="<?= base_url() ?>Userpage/assets/img/gallery/<?= ($productDetails['ImageURL']) ?>"
+                    class="w-100">
                 </div>
               </div>
             </div>

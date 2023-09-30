@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class ProductsController extends BaseController
+class UserController extends BaseController
 {
     private $products;
     private $productsCategories;
