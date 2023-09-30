@@ -89,13 +89,19 @@ class MainController extends BaseController
                 $ses_data = [
                     'id' => $data['id'],
                     'username' => $data['Username'],
-                    // Make sure 'Username' matches your database column name
+                    'role' => $data['Role'],
                     'isLoggedIn' => true
                 ];
 
                 // Set session data
                 $session->set($ses_data);
-                return redirect()->to(""); // Change the URL accordingly
+                // Redirect based on the user's role
+                if ($data['Role'] === 'admin') {
+                    return redirect()->to(base_url('admin'));
+
+                } else {
+                    return redirect()->to('');
+                }
             } else {
                 // If the password is incorrect, display an error message
                 $session->setFlashdata('msg', 'Email or Password is incorrect.');

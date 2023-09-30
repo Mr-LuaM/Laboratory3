@@ -46,7 +46,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="single-new-arrival mb-50 text-center">
                                         <div class="popular-img">
-                                            <img src="<?= base_url() ?>assets/img/gallery/<?= esc($product['ImageURL']) ?>"
+                                            <img src="<?= base_url() ?>Userpage/assets/img/gallery/<?= esc($product['ImageURL']) ?>"
                                                 alt="<?= esc($product['ProductName']) ?>">
                                         </div>
                                         <div class="popular-caption">
