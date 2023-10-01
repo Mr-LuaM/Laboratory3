@@ -19,6 +19,7 @@ class UserController extends BaseController
         $data = [
             'productsCategories' => $this->productsCategories->findAll(),
             'products' => $this->products->findAll(),
+            'context' => 'Home',
         ];
         return view('User_page/index', $data);
     }
@@ -27,6 +28,7 @@ class UserController extends BaseController
         $data = [
             'productsCategories' => $this->productsCategories->findAll(),
             'products' => $this->products->findAll(),
+            'context' => 'Products',
         ];
         return view('User_page/product', $data);
     }
@@ -48,8 +50,17 @@ class UserController extends BaseController
 
         $data = [
             'productDetails' => $productDetails,
+            'context' => 'View',
         ];
 
         return view('User_page/product_details', $data);
+    }
+
+    public function about()
+    {
+        $data = [
+            'context' => 'About',
+        ];
+        return view('User_page/about', $data);
     }
 }

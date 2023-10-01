@@ -14,27 +14,7 @@
 
   <main>
 
-    <div class="slider-area ">
-      <div class="slider-active">
-        <div class="single-slider hero-overly2  slider-height2 d-flex align-items-center slider-bg2">
-          <div class="container">
-            <div class="row">
-              <div class="col-xl-6 col-lg-8 col-md-8">
-                <div class="hero__caption hero__caption2">
-                  <h1 data-animation="fadeInUp" data-delay=".4s">Product details</h1>
-                  <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                      <li class="breadcrumb-item"><a href="#">Product details</a></li>
-                    </ol>
-                  </nav>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?= $this->include('User_page/includes/slider') ?>
 
 
     <div class="product_image_area section-padding40">
@@ -87,7 +67,7 @@
                   <a href="#" class="like_us"> <i class="ti-heart"></i> </a>
                 </div>
                 <div class="social_icon">
-                  <!-- Add your social media links here -->
+                  <!-- Add your social media links here pero design lang ngayon-->
                   <a href="#" class="fb"><i class="ti-facebook"></i></a>
                   <a href="#" class="tw"><i class="ti-twitter-alt"></i></a>
                   <a href="#" class="li"><i class="ti-linkedin"></i></a>
