@@ -16,3 +16,17 @@
 
 <!-- Page level custom scripts -->
 <script src="Adminpage/js/demo/datatables-demo.js"></script>
+<script>$(document).ready(function () {
+        $('#userDataTable').DataTable(); // Initialize DataTable for userDataTable
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var dataTable = $('#productDataTable').DataTable();
+
+        <?php if ($currentRoute !== 'products'): ?>
+            // Hide the "Actions" column when not on the 'products' route
+            dataTable.column(6).visible(false);
+        <?php endif; ?>
+    });
+</script>

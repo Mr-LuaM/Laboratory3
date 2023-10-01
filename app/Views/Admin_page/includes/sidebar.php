@@ -12,7 +12,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
+
     <li class="nav-item <?= $currentRoute == 'home' ? 'active' : '' ?>">
         <a class="nav-link" href="<?= route_to('admin') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -20,11 +20,18 @@
         </a>
     </li>
 
-    <!-- Nav Item - Tables -->
+
     <li class="nav-item <?= $currentRoute == 'products' ? 'active' : '' ?>">
         <a class="nav-link" href="<?= route_to('manageProduct') ?>">
             <i class="fas fa-fw fa-table"></i>
             <span>Products</span>
+        </a>
+    </li>
+
+    <li class="nav-item <?= $currentRoute == 'users' ? 'active' : '' ?>">
+        <a class="nav-link" href="<?= route_to('manageUser') ?>">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Users</span>
         </a>
     </li>
 

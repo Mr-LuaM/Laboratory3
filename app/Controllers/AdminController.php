@@ -8,33 +8,34 @@ class AdminController extends BaseController
 {
     private $products;
     private $productsCategories;
+    private $users;
 
     public function __construct()
     {
         $this->productsCategories = new \App\Models\ProductsCategoriesModel();
         $this->products = new \App\Models\ProductsModel();
+        $this->users = new \App\Models\UsersModel();
     }
     public function index()
     {
         $data = [
             'currentRoute' => 'home',
             'products' => $this->products->getProductsWithCategory(),
+            //reusable function from modell na naka join na query
+            'users' => $this->users->findAll(),
         ];
         return view('Admin_page/index', $data);
     }
 
     public function manageProduct()
     {
-
-
         $data = [
-            'products' => $this->products->getProductsWithCategory(),
             'currentRoute' => 'products',
+            'products' => $this->products->getProductsWithCategory(),
             'categories' => $this->productsCategories->findAll(),
-            // Pass the products data to the view
         ];
         // return $this->response->setJSON($data);
-        return view('Admin_page/manage_products', $data); // Load the "manage_products" view and pass data
+        return view('Admin_page/manage_products', $data);
     }
 
     public function delete($id)
@@ -43,7 +44,7 @@ class AdminController extends BaseController
         $product = $this->products->find($id);
 
         if (!$product) {
-            // Product not found, you can show an error message or redirect to a 404 page.
+            // Product not found, error message
             return redirect()->to(base_url('manageProduct'))->with('error', 'Product not found');
         }
 
@@ -55,7 +56,6 @@ class AdminController extends BaseController
     }
     public function addProduct()
     {
-        // Load any necessary models or libraries here
         // Validation rules for adding a new product
         $addValidationRules = [
             'product_name' => 'required',
@@ -80,7 +80,7 @@ class AdminController extends BaseController
 
         if ($this->request->getMethod() === 'post') {
             if (!empty($editProductId)) {
-                // Editing an existing product
+                // Editing an existing product pag may nahanap sa hidden text
                 // Perform validation and update the existing product
                 if (!$this->validate($updateValidationRules)) {
                     // Validation failed, return to the form with errors
@@ -155,12 +155,49 @@ class AdminController extends BaseController
                 return redirect()->to(base_url('manageProduct'))->with('success', 'Product added successfully');
             }
         }
-
-        // Load any necessary data or models needed for the form
-
-        // Load the view for the add product form
         return view('Admin_page/manage_products');
     }
+
+    public function manageUser()
+    {
+        $data = [
+            'users' => $this->users->findAll(),
+            'currentRoute' => 'users',
+        ];
+        return view('Admin_page/manage_users', $data);
+    }
+
+    public function editUserRole()
+    {
+        // echo 'has access';
+
+        $userid = $this->request->getPost('userid');
+        $newUserRole = $this->request->getPost('userrole');
+
+
+        $user = $this->users->find($userid);
+
+        if (!$user) {
+            return redirect()->to(base_url('manageUser'))->with('error', 'User not found');
+        }
+
+        $this->users->update($userid, ['Role' => $newUserRole]);
+
+        return redirect()->to(base_url('manageUser'))->with('success', 'User role updated successfully');
+    }
+    public function delete_user($id)
+    {
+        $user = $this->users->find($id);
+
+        if (!$user) {
+            return redirect()->to(base_url('manageUser'))->with('error', 'User not found');
+        }
+
+        $this->users->delete($id);
+
+        return redirect()->to(base_url('manageUser'))->with('success', 'User deleted successfully');
+    }
+
 
 
 
