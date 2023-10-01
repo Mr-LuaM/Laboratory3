@@ -82,6 +82,7 @@ class AdminController extends BaseController
             if (!empty($editProductId)) {
                 // Editing an existing product pag may nahanap sa hidden text
                 // Perform validation and update the existing product
+                // ...
                 if (!$this->validate($updateValidationRules)) {
                     // Validation failed, return to the form with errors
                     return redirect()->to(base_url('manageProduct'))->withInput()->with('success', $this->validator->getErrors());
@@ -95,8 +96,10 @@ class AdminController extends BaseController
                 $categoryId = $this->request->getVar('category');
                 $stockQuantity = $this->request->getVar('stock_quantity');
 
-                // Handle file upload for image (if needed)
-                $imagePath = ''; // Default value
+                // Default value for image path
+                $imagePath = '';
+
+                // Check if a new image file is uploaded
                 $image = $this->request->getFile('image');
                 if ($image->isValid() && !$image->hasMoved()) {
                     $newName = $image->getRandomName();
@@ -105,17 +108,24 @@ class AdminController extends BaseController
                 }
 
                 // Update the product in the database based on $editProductId
-                $this->products->update($editProductId, [
+                $productData = [
                     'ProductName' => $productName,
                     'Description' => $description,
                     'Price' => $price,
                     'CategoryID' => $categoryId,
                     'StockQuantity' => $stockQuantity,
-                    'ImageURL' => $imagePath,
-                ]);
+                ];
+
+                // mag update lang ang image path kapag hindinull, kapag null stay the same
+                if (!empty($imagePath)) {
+                    $productData['ImageURL'] = $imagePath;
+                }
+
+                $this->products->update($editProductId, $productData);
 
                 // Redirect to a success page or show a success message
                 return redirect()->to(base_url('manageProduct'))->with('success', 'Product updated successfully');
+
             } else {
                 // Adding a new product
                 // Perform validation and insert a new product

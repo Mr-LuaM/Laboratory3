@@ -44,7 +44,6 @@
                         <label for="image">Image</label>
                         <input type="file" class="form-control-file" id="image" name="image">
                     </div>
-                    <!-- Add more form fields as needed -->
                 </div>
 
                 <div class="modal-footer">

@@ -115,9 +115,8 @@ class MainController extends BaseController
     }
     protected function isLoggedIn()
     {
-        // Check if the user is authenticated based on your authentication logic
-        // For example, you can check if a user session variable exists
-        return session()->has('UserID'); // Adjust this logic based on your implementation
+        // Check if the user is authenticated //babalikan 
+        return session()->has('UserID');
     }
     public function logout()
     {

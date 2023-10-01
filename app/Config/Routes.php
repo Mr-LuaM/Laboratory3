@@ -14,6 +14,7 @@ $routes->post('loginAuth', 'MainController::loginAuth');
 $routes->get('logout', 'MainController::logout');
 $routes->get('viewProducts/(:any)', 'UserController::viewProducts/$1', ['filter' => 'authGuard']);
 $routes->get('product', 'UserController::product', ['filter' => 'authGuard']);
+$routes->get('about', 'UserController::about', ['filter' => 'authGuard']);
 $routes->get('manageProduct', 'AdminController::manageProduct', ['filter' => 'adminFilter']);
 $routes->get('manageUser', 'AdminController::manageUser', ['filter' => 'adminFilter']);
 $routes->get('delete_product/(:any)', 'AdminController::delete/$1', ['filter' => 'adminFilter']);

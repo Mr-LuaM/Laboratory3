@@ -3,8 +3,8 @@
     <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-10">
             <div class="section-tittle mb-60 text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
-                <h2>Popular products</h2>
-                <P>Take a look at our popular products</P>
+                <h2>Our products</h2>
+                <P>Take a look at our products</P>
             </div>
         </div>
     </div>
